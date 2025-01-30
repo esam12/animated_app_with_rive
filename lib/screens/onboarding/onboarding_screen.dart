@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:animated_app_with_rive/screens/onboarding/components/animated_btn.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
 
