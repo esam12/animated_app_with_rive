@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:animated_app_with_rive/screens/onboarding/components/animated_btn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart' as rive;
@@ -36,11 +37,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               "assets/Backgrounds/Spline.png",
             ),
           ),
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-            ),
-          ),
+
           rive.RiveAnimation.asset("assets/RiveAssets/shapes.riv"),
           Positioned.fill(
             child: BackdropFilter(
@@ -94,52 +91,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class AnimatedBtn extends StatelessWidget {
-  const AnimatedBtn({
-    super.key,
-    required rive.RiveAnimationController btnAnimationController,
-    this.onTap,
-  }) : _btnAnimationController = btnAnimationController;
-
-  final rive.RiveAnimationController _btnAnimationController;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        height: 64,
-        width: 260,
-        child: Stack(
-          children: [
-            rive.RiveAnimation.asset(
-              'assets/RiveAssets/button.riv',
-              controllers: [_btnAnimationController],
-            ),
-            Positioned.fill(
-              top: 8.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.arrow_right),
-                  SizedBox(width: 8.0),
-                  Text(
-                    'Start the challenge',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
       ),
     );
   }
