@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animated_app_with_rive/screens/onboarding/components/animated_btn.dart';
 import 'package:animated_app_with_rive/screens/onboarding/components/sign_in_form.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rive/rive.dart' as rive;
 
 class OnboardingScreen extends StatefulWidget {
@@ -91,7 +92,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               height: 620,
                               margin: EdgeInsets.symmetric(horizontal: 16.0),
                               padding: EdgeInsets.symmetric(
-                                vertical: 32.0,
+                                vertical: 16.0,
                                 horizontal: 24.0,
                               ),
                               decoration: BoxDecoration(
@@ -137,6 +138,52 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                             ),
                                           ),
                                           Expanded(child: Divider()),
+                                        ],
+                                      ),
+
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 18.0),
+                                        child: Text(
+                                          "Sign up with Email, Apple or Google",
+                                          style: TextStyle(
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 16.0),
+
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () {},
+                                            icon: SvgPicture.asset(
+                                              "assets/icons/email_box.svg",
+                                              height: 64,
+                                              width: 64,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () {},
+                                            icon: SvgPicture.asset(
+                                              "assets/icons/apple_box.svg",
+                                              height: 64,
+                                              width: 64,
+                                            ),
+                                          ),
+                                          IconButton(
+                                            padding: EdgeInsets.zero,
+                                            onPressed: () {},
+                                            icon: SvgPicture.asset(
+                                              "assets/icons/google_box.svg",
+                                              height: 64,
+                                              width: 64,
+                                            ),
+                                          ),
                                         ],
                                       )
                                     ],
