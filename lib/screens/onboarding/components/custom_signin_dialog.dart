@@ -2,7 +2,7 @@ import 'package:animated_app_with_rive/screens/onboarding/components/sign_in_for
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-Future<Object?> customSignInDialog(BuildContext context) {
+Future<Object?> customSignInDialog(BuildContext context, {required ValueChanged onClosed}) {
   return showGeneralDialog(
     context: context,
     barrierLabel: 'Sign In',
@@ -143,5 +143,5 @@ Future<Object?> customSignInDialog(BuildContext context) {
         ),
       );
     },
-  );
+  ).then(onClosed);
 }
