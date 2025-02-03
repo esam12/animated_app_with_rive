@@ -1,9 +1,8 @@
 import 'dart:ui';
 
 import 'package:animated_app_with_rive/screens/onboarding/components/animated_btn.dart';
-import 'package:animated_app_with_rive/screens/onboarding/components/sign_in_form.dart';
+import 'package:animated_app_with_rive/screens/onboarding/components/custom_signin_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:rive/rive.dart' as rive;
 
 class OnboardingScreen extends StatefulWidget {
@@ -23,6 +22,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       "active",
       autoplay: false,
     );
+  }
+
+  @override
+  void dispose() {
+    _btnAnimationController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -81,119 +87,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     btnAnimationController: _btnAnimationController,
                     onTap: () {
                       _btnAnimationController.isActive = true;
-                      showGeneralDialog(
-                        context: context,
-                        barrierLabel: 'Sign In',
-                        barrierDismissible: true, // close it when click outside
-
-                        pageBuilder: (context, __, ___) {
-                          return Center(
-                            child: Container(
-                              height: 620,
-                              margin: EdgeInsets.symmetric(horizontal: 16.0),
-                              padding: EdgeInsets.symmetric(
-                                vertical: 16.0,
-                                horizontal: 24.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.9),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                              ),
-                              child: Scaffold(
-                                backgroundColor: Colors.transparent,
-                                body: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        'Sign In ',
-                                        style: TextStyle(
-                                          fontSize: 32,
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 16),
-                                        child: Text(
-                                          "Access 120+ hours of content. Learn design and code, by building real apps with Flutter and Swift. Complete courses about the best tools.",
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-
-                                      // Email & Password
-                                      SignInForm(),
-
-                                      Row(
-                                        children: [
-                                          Expanded(child: Divider()),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8.0),
-                                            child: Text(
-                                              'OR',
-                                              style: TextStyle(
-                                                  color: Colors.black26),
-                                            ),
-                                          ),
-                                          Expanded(child: Divider()),
-                                        ],
-                                      ),
-
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 18.0),
-                                        child: Text(
-                                          "Sign up with Email, Apple or Google",
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 16.0),
-
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            onPressed: () {},
-                                            icon: SvgPicture.asset(
-                                              "assets/icons/email_box.svg",
-                                              height: 64,
-                                              width: 64,
-                                            ),
-                                          ),
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            onPressed: () {},
-                                            icon: SvgPicture.asset(
-                                              "assets/icons/apple_box.svg",
-                                              height: 64,
-                                              width: 64,
-                                            ),
-                                          ),
-                                          IconButton(
-                                            padding: EdgeInsets.zero,
-                                            onPressed: () {},
-                                            icon: SvgPicture.asset(
-                                              "assets/icons/google_box.svg",
-                                              height: 64,
-                                              width: 64,
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      );
+                      Future.delayed(const Duration(milliseconds: 800), () {
+                        customSignInDialog(context);
+                      });
                     },
                   ),
 
